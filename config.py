@@ -2,7 +2,11 @@ import pandas as pd
 
 # Load datasets
 DATASET_1 = pd.read_csv(r"Data Files/Labour1_use.csv")
+print(f"The shape of the original dataset 1 is {DATASET_1.shape}")
+
 DATASET_2 = pd.read_excel(r"Data Files/Labour2_use.xlsx", header=3)
+print(f"The shape of the original dataset 2 is {DATASET_2.shape}")
+
 QUICK_ACCESS_DF = pd.read_csv(r"clean_dataset.csv")
 
 # Load codebooks

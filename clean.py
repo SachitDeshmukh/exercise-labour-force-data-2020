@@ -11,11 +11,19 @@ def clean_data(df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
 
     # Dropping duplicates and NaN
     df_1 = df_1.dropna(subset=["person_code"])
+    print(
+        f"The shape of the dataset 1 after dropping NaN person codes is {df_1.shape}."
+    )
     df_2 = df_2.dropna(subset=["person_code"])
+    print(
+        f"The shape of the dataset 2 after dropping NaN person codes is {df_2.shape}."
+    )
     df_2 = df_2.drop_duplicates(subset="person_code")
+    print(f"The shape of the dataset 2 after dropping duplicates is {df_2.shape}.")
 
     # Merging the two data sets
     merged_df = pd.merge(df_1, df_2, on="person_code", sort=True)
+    print(f"The shape of the merged dataset is {merged_df.shape}.")
 
     # Clean NaN values
     merged_df["socialsecurity"] = (
@@ -57,7 +65,5 @@ if __name__ == "__main__":
     data_1_df = DATASET_1.copy(deep=True)
     data_2_df = DATASET_2.copy(deep=True)
     clean_df = clean_data(data_1_df, data_2_df)
-    print(clean_df.info())
     clean_df = assign_new_id(clean_df, ID_COLS)
-    print(clean_df["assigned_unique_id"].head(20))
     clean_df.to_csv(r"clean_dataset.csv", index=False)
