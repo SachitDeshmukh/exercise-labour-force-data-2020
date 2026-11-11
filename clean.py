@@ -41,6 +41,17 @@ def clean_data(df_1: pd.DataFrame, df_2: pd.DataFrame) -> pd.DataFrame:
     # Drop outliers
     clean_df = merged_df[merged_df["earn_l30d"] >= float(0)]
 
+    clean_df = clean_df[clean_df["age"] >= float(15)]
+    age_q1 = clean_df["age"].quantile(0.25)
+    age_q3 = clean_df["age"].quantile(0.75)
+    age_iqr = age_q3 - age_q1
+    age_lower_bound = age_q1 - 1.5 * age_iqr
+    age_upper_bound = age_q3 + 1.5 * age_iqr
+
+    clean_df = clean_df[clean_df["age"] >= age_lower_bound]
+    clean_df = clean_df[clean_df["age"] <= age_upper_bound]
+    print(f"The shape of the cleaned dataset is {clean_df.shape}.")
+
     return clean_df
 
 
