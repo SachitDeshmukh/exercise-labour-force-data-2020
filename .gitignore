@@ -12,6 +12,7 @@ wheels/
 # Files and folders
 "Data Files"
 "Supporing Documents"
+stata_review_output
 **/*.pdf
 **/*.dta
 **/*.xlsx
