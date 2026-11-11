@@ -30,7 +30,6 @@ def label_one_variable(
         {"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-"}, regex=True
     )
 
-    print(df[value_col].value_counts())
     return df
 
 
