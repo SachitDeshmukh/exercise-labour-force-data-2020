@@ -74,7 +74,7 @@ preserve
 
     * capture if last months earnings were above 0
     replace earnings = 1 if earn_l30d > 0
-    replace earning = 0 if earn_l30d == 0
+    replace earnings = 0 if earn_l30d == 0
     
     * capture if person has job contract for at least an year or more
     replace contract_present = 0 if contract_type_labeled == 0 | contract_type_labeled == 1
